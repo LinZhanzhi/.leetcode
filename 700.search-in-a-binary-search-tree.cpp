@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=653 lang=cpp
+ * @lc app=leetcode id=700 lang=cpp
  *
- * [653] Two Sum IV - Input is a BST
+ * [700] Search in a Binary Search Tree
  */
 
 // @lc code=start
@@ -19,17 +19,16 @@
  */
 class Solution {
 public:
-  bool findTarget(TreeNode *root, int k) {
-    unordered_set<int> seen;
-    function<bool(TreeNode *)> dfs = [&](TreeNode *node) -> bool {
-      if (!node)
-        return false;
-      if (seen.count(k - node->val))
-        return true;
-      seen.insert(node->val);
-      return dfs(node->left) || dfs(node->right);
-    };
-    return dfs(root);
+  TreeNode *searchBST(TreeNode *root, int val) {
+    if (root == nullptr)
+      return nullptr;
+    if (root->val == val)
+      return root;
+    if (val < root->val) {
+      return searchBST(root->left, val);
+    } else {
+      return searchBST(root->right, val);
+    }
   }
 };
 // @lc code=end

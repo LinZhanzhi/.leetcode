@@ -4,10 +4,10 @@
 -- [177] Nth Highest Salary
 --
 -- @lc code=start
-CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT BEGIN RETURN (
-  SELECT DISTINCT salary
-  FROM Employee
-  ORDER BY salary DESC
-  LIMIT N -1, 1
-);
-END -- @lc code=end
+SELECT (
+    SELECT DISTINCT salary
+    FROM Employee
+    ORDER BY salary DESC
+    LIMIT 1 OFFSET n -1
+  ) AS getNthHighestSalary;
+-- @lc code=end

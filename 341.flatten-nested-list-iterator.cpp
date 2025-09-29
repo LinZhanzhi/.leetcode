@@ -115,4 +115,97 @@ public:
  * NestedIterator i(nestedList);
  * while (i.hasNext()) cout << i.next();
  */
-// @lc code=end
+
+/*
+/*
+* Brief, Digested Understanding:
+* ----
+* The NestedIterator class allows us to flatten a nested list of integers (where
+* each element can be either an integer or another list) and iterate through all
+* the integers in order, as if the list was fully flattened. The iterator uses a
+* stack to keep track of where we are in each nested list, so we can efficiently
+* move through the structure without flattening everything up front.
+*
+* High-Level Summary:
+* ----
+* The iterator maintains a stack of pairs of iterators, each representing our
+* current position in a nested list. The hasNext() method ensures that the top
+* of the stack always points to an integer (not a sublist), drilling down into
+* sublists as needed. The next() method then returns this integer and advances
+* the iterator. This approach is efficient, using O(d) space where d is the
+* maximum depth of nesting, and each integer is visited exactly once.
+*
+* Time Complexity: O(1) amortized per call to next() and hasNext().
+* Space Complexity: O(d), where d is the maximum nesting depth.
+*/
+
+/*
+ * Step-by-step Example: Input: nestedList = [[1,1],2,[1,1]]
+ *
+ * Let's walk through how the NestedIterator processes this input:
+ *
+ * Initial nestedList: [[1,1], 2, [1,1]]
+ *
+ * 1. Construction:
+ *    - The stack is initialized with iterators pointing to the beginning and
+ * end of the top-level list: stack = [{begin, end}]
+ *
+ * 2. First hasNext():
+ *    - Top of stack points to [[1,1]] (a list, not an integer).
+ *    - Drill down: push iterators for [1,1] onto the stack.
+ *    - Now, stack = [{top-level begin, end}, {begin of [1,1], end of [1,1]}]
+ *    - Top now points to 1 (an integer), so hasNext() returns true.
+ *
+ * 3. First next():
+ *    - Returns 1 (from the innermost [1,1]).
+ *    - Advances the innermost iterator to the next element (still in [1,1]).
+ *
+ * 4. Second hasNext():
+ *    - Top of stack points to 1 (still an integer).
+ *    - hasNext() returns true.
+ *
+ * 5. Second next():
+ *    - Returns 1 (second element of [1,1]).
+ *    - Advances the innermost iterator to the end of [1,1].
+ *    - Since we've reached the end, pop this level off the stack.
+ *
+ * 6. Third hasNext():
+ *    - Now, top of stack points to 2 (an integer).
+ *    - hasNext() returns true.
+ *
+ * 7. Third next():
+ *    - Returns 2.
+ *    - Advances the top-level iterator to the next element ([1,1]).
+ *
+ * 8. Fourth hasNext():
+ *    - Top of stack points to [1,1] (a list).
+ *    - Drill down: push iterators for this [1,1] onto the stack.
+ *    - Now, top points to 1 (an integer).
+ *    - hasNext() returns true.
+ *
+ * 9. Fourth next():
+ *    - Returns 1 (from the second [1,1]).
+ *    - Advances the innermost iterator.
+ *
+ * 10. Fifth hasNext():
+ *     - Top of stack points to 1 (second element of [1,1]).
+ *     - hasNext() returns true.
+ *
+ * 11. Fifth next():
+ *     - Returns 1.
+ *     - Advances the innermost iterator to the end of [1,1].
+ *     - Pop this level off the stack.
+ *
+ * 12. Sixth hasNext():
+ *     - Top-level iterator is now at the end.
+ *     - Pop this level off the stack.
+ *     - Stack is empty, so hasNext() returns false.
+ *
+ * Output sequence: 1, 1, 2, 1, 1
+ *
+ * This step-by-step shows how the stack is used to traverse the nested
+ * structure in order, always drilling down into lists and returning integers in
+ * the correct sequence.
+ */
+*/
+    // @lc code=end

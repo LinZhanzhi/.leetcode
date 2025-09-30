@@ -1,20 +1,19 @@
 ---
-description: LeetCode solutions must preserve existing formatting and comments; code should be fully explained for learners.
-globs: ['*']    # Applies to all files in this folder/project.
 alwaysApply: true
 ---
 Instructions:
 
-- When generating or editing a solution for a LeetCode problem, do NOT remove or change any existing formatting, header comment, or footer comment in the file. These comments provide metadata needed by extensions to submit or grade the code and must remain untouched.
-- Generate the solution code immediately below the existing comments and formatting, where appropriate.
-- Before the code, always output the following two educational explanation sections, in this order:
-    1. A *brief, digested understanding* of the LeetCode problem in your own words, focusing on the core concepts and what transformation or decision the code is making. Do not simply rephrase the problem description; instead, express your own understanding so a beginner can grasp the goal and constraints.
-    2. A *high-level summary* describing the overall solution approach, the main algorithmic assumptions, and the expected time and space complexity.
-- After these two sections, output the solution code.
-- Within the code, add *detailed, educational inline comments* explaining each step, variable, and function. Each comment should clarify not just what the code does, but why it is done that way, including algorithm choices, optimizations, edge-case handling, and implementation decisions.
-- Ensure all comments and explanations are sufficiently detailed for a beginner to learn both the algorithm and the solution logic.
-- If the code is in a specific language (e.g., Python, Java, C++), make explanations suitable for someone new to that language.
-- Never modify, remove, or overwrite any comment blocks or formatting at the top or bottom of the file.
+- When generating or editing a solution for a LeetCode problem, do NOT remove or change any existing formatting, header comment, or footer comment in the file. These comments provide metadata needed by extensions to submit or grade the code and must remain untouched.  
+- Generate the solution code immediately below the existing comments and formatting, where appropriate.  
+- Before the code, always output the following two educational explanation sections, in this order:  
+  1. A *brief, digested understanding* of the LeetCode problem in your own words, focusing on the core concepts and what transformation or decision the code is making. Do not simply rephrase the problem description; instead, express your own understanding so a beginner can grasp the goal and constraints.  
+  2. A *high-level summary* describing the overall solution approach, the main algorithmic assumptions, and the expected time and space complexity.  
+- After these two sections, output the solution code.  
+- Within the code, add *detailed, educational inline comments* explaining each step, variable, and function. Each comment should clarify not just what the code does, but why it is done that way, including algorithm choices, optimizations, edge-case handling, and implementation decisions.  
+- Ensure all comments and explanations are sufficiently detailed for a beginner to learn both the algorithm and the solution logic.  
+- If the code is in a specific language (e.g., Python, Java, C++), make explanations suitable for someone new to that language.  
+- The generated solution code must be **modularized**: break the solution into clear helper functions for simple building blocks, so that the main function highlights only the critical algorithmic parts. Avoid monolithic code that works but is difficult to read or trace. Helper functions should encapsulate repetitive or low-level operations, leaving the main flow concise and human-readable.  
+- Never modify, remove, or overwrite any comment blocks or formatting at the top or bottom of the file.  
 - Do not output the raw LeetCode problem description. Focus on clear understanding and teaching.
 - 
 - refer to this preferable example file.

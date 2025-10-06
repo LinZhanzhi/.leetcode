@@ -6,8 +6,11 @@ Instructions:
 - When generating or editing a solution for a LeetCode problem, do NOT remove or change any existing formatting, header comment, or footer comment in the file. These comments provide metadata needed by extensions to submit or grade the code and must remain untouched.  
 - Generate the solution code immediately below the existing comments and formatting, where appropriate.  
 - Before the code, always output the following two educational explanation sections, in this order:  
-  1. A *brief, digested understanding* of the LeetCode problem in your own words, focusing on the core concepts and what transformation or decision the code is making. Do not simply rephrase the problem description; instead, express your own understanding so a beginner can grasp the goal and constraints.  
-  2. A *high-level summary* describing the overall solution approach, the main algorithmic assumptions, and the expected time and space complexity.  
+  1. **Brief Digested Understanding:**
+    - Summarize the core concept of the LeetCode problem in your own words. Focus on what the problem is really asking, the main action or transformation, and any key constraints. Avoid just paraphrasing the official problem statement. Imagine you're teaching a beginner: what is this problem *actually* about at its core?
+  2. **High-Level Summary:**
+    - Summarize how you'll approach and solve the problem at a bird's-eye view: what's the main algorithm, what patterns or data structures are involved, and what assumptions you rely on? Also, mention the expected time and space complexity. The goal is to give the reader a sense of the big picture and algorithmic tradeoffs before seeing details.
+  **Note:** Since these explanation sections might be long, Cursor should break the lines to keep the output readable for users.
 - After these two sections, output the solution code.  
 - Within the code, add *detailed, educational inline comments* explaining each step, variable, and function. Each comment should clarify not just what the code does, but why it is done that way, including algorithm choices, optimizations, edge-case handling, and implementation decisions.  
 - Ensure all comments and explanations are sufficiently detailed for a beginner to learn both the algorithm and the solution logic.  

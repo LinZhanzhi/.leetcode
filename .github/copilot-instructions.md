@@ -3,22 +3,22 @@ applyTo: "**"
 ---
 Instructions:
 
-- When generating or editing a solution for a LeetCode problem, do NOT remove or change any existing formatting, header comment, or footer comment in the file. These comments provide metadata needed by extensions to submit or grade the code and must remain untouched.  
-- Generate the solution code immediately below the existing comments and formatting, where appropriate.  
-- Before the code, always output the following two educational explanation sections, in this order:  
+- When generating or editing a solution for a LeetCode problem, do NOT remove or change any existing formatting, header comment, or footer comment in the file. These comments provide metadata needed by extensions to submit or grade the code and must remain untouched.
+- Generate the solution code immediately below the existing comments and formatting, where appropriate.
+- Before the code, always output the following two educational explanation sections, in this order:
   1. **Brief Digested Understanding:**
     - Summarize the core concept of the LeetCode problem in your own words. Focus on what the problem is really asking, the main action or transformation, and any key constraints. Avoid just paraphrasing the official problem statement. Imagine you're teaching a beginner: what is this problem *actually* about at its core?
   2. **High-Level Summary:**
     - Summarize how you'll approach and solve the problem at a bird's-eye view: what's the main algorithm, what patterns or data structures are involved, and what assumptions you rely on? Also, mention the expected time and space complexity. The goal is to give the reader a sense of the big picture and algorithmic tradeoffs before seeing details.
   **Note:** Since these explanation sections might be long, Cursor should break the lines to keep the output readable for users.
-- After these two sections, output the solution code.  
-- Within the code, add *detailed, educational inline comments* explaining each step, variable, and function. Each comment should clarify not just what the code does, but why it is done that way, including algorithm choices, optimizations, edge-case handling, and implementation decisions.  
-- Ensure all comments and explanations are sufficiently detailed for a beginner to learn both the algorithm and the solution logic.  
-- If the code is in a specific language (e.g., Python, Java, C++), make explanations suitable for someone new to that language.  
-- The generated solution code must be **modularized**: break the solution into clear helper functions for simple building blocks, so that the main function highlights only the critical algorithmic parts. Avoid monolithic code that works but is difficult to read or trace. Helper functions should encapsulate repetitive or low-level operations, leaving the main flow concise and human-readable.  
-- Never modify, remove, or overwrite any comment blocks or formatting at the top or bottom of the file.  
+- After these two sections, output the solution code.
+- Within the code, add *detailed, educational inline comments* explaining each step, variable, and function. Each comment should clarify not just what the code does, but why it is done that way, including algorithm choices, optimizations, edge-case handling, and implementation decisions.
+- Ensure all comments and explanations are sufficiently detailed for a beginner to learn both the algorithm and the solution logic.
+- If the code is in a specific language (e.g., Python, Java, C++), make explanations suitable for someone new to that language.
+- The generated solution code must be **modularized**: break the solution into clear helper functions for simple building blocks, so that the main function highlights only the critical algorithmic parts. Avoid monolithic code that works but is difficult to read or trace. Helper functions should encapsulate repetitive or low-level operations, leaving the main flow concise and human-readable.
+- Never modify, remove, or overwrite any comment blocks or formatting at the top or bottom of the file.
 - Do not output the raw LeetCode problem description. Focus on clear understanding and teaching.
-- 
+-
 - refer to this preferable example file.
 /*
  * @lc app=leetcode id=208 lang=cpp

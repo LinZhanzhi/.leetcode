@@ -47,6 +47,7 @@ public:
         if (left == right) {
           // If pointers meet, add the last remaining number
           result.push_back(left);
+          break;
         } else {
           // Add from left, then from right, to maximize the difference
           result.push_back(left++);

@@ -1,7 +1,0 @@
-For the following code of a LeetCode problem:
-
-1. Begin by outputting a brief, digested understanding of the problem in your own words, focusing on the fundamental concepts and what the task is asking. Do not simply repeat or slightly rephrase the given problem description—instead, express your core understanding and interpretation so a beginner can grasp what needs to be achieved.
-2. Next, write a high-level summary describing the solution approach, the main assumptions, and the expected time and space complexity.
-3. Then, review the code and add detailed, educational inline comments. Each step, variable, and function should be explained with clear reasoning, focusing especially on why it exists and how it contributes to solving the problem, not just what it does. Explain choices about algorithms, optimizations, and edge case handling.
-4. Ensure all comments are detailed enough for a beginner to learn both the algorithm and the solution logic.
-5. If the code is for a specific language, make the explanations suitable for audience new to that language.

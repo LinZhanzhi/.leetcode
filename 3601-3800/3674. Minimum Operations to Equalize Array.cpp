@@ -40,5 +40,15 @@ class Solution
 public:
     int minOperations(vector<int> &nums)
     {
-    }
+        // if all elements are already equal, return 0
+        // otherwise, we can always make all elements equal in 1 operation by choosing the entire array
+        for (int i = 1; i < nums.size(); i++)
+        {
+            if (nums[i] != nums[0])
+            {
+                return 1;
+            }
+        }
+        return 0;
+    };
 };

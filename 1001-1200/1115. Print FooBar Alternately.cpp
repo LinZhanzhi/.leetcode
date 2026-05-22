@@ -44,11 +44,16 @@ class FooBar
 {
 private:
     int n;
+    // make a semaphore for foo and bar
+    sem_t semFoo;
+    sem_t semBar;
 
 public:
     FooBar(int n)
     {
         this->n = n;
+        sem_init(&semFoo, 0, 1); // foo allowed first
+        sem_init(&semBar, 0, 0); // bar blocked
     }
 
     void foo(function<void()> printFoo)
@@ -56,9 +61,12 @@ public:
 
         for (int i = 0; i < n; i++)
         {
+            sem_wait(&semFoo); // wait until it's foo's turn
 
             // printFoo() outputs "foo". Do not change or remove this line.
             printFoo();
+
+            sem_post(&semBar); // give turn to bar
         }
     }
 
@@ -67,9 +75,11 @@ public:
 
         for (int i = 0; i < n; i++)
         {
+            sem_wait(&semBar); // wait until it's bar's turn
 
             // printBar() outputs "bar". Do not change or remove this line.
             printBar();
+            sem_post(&semFoo); // give turn to foo
         }
     }
 };

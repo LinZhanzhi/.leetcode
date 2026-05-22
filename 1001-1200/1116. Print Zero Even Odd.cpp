@@ -37,7 +37,8 @@ Constraints:
 #include <functional>
 #include <semaphore.h>
 
-class ZeroEvenOdd {
+class ZeroEvenOdd
+{
 private:
     int n;
     sem_t semZero;
@@ -45,38 +46,48 @@ private:
     sem_t semOdd;
 
 public:
-    ZeroEvenOdd(int n) : n(n) {
+    ZeroEvenOdd(int n) : n(n)
+    {
         sem_init(&semZero, 0, 1); // zero allowed first
         sem_init(&semEven, 0, 0); // even blocked
-        sem_init(&semOdd,  0, 0); // odd blocked
+        sem_init(&semOdd, 0, 0);  // odd blocked
     }
 
-    void zero(function<void(int)> printNumber) {
-        for (int i = 1; i <= n; ++i) {
-            sem_wait(&semZero);       // wait until it's zero's turn
-            printNumber(0);           // print 0
+    void zero(function<void(int)> printNumber)
+    {
+        for (int i = 1; i <= n; ++i)
+        {
+            sem_wait(&semZero); // wait until it's zero's turn
+            printNumber(0);     // print 0
 
-            if (i % 2 == 1) {         // next number is odd
-                sem_post(&semOdd);    // wake odd thread
-            } else {                  // next number is even
-                sem_post(&semEven);   // wake even thread
+            if (i % 2 == 1)
+            {                      // next number is odd
+                sem_post(&semOdd); // wake odd thread
+            }
+            else
+            {                       // next number is even
+                sem_post(&semEven); // wake even thread
             }
         }
     }
 
-    void even(function<void(int)> printNumber) {
-        for (int i = 2; i <= n; i += 2) {
-            sem_wait(&semEven);       // wait until zero signals even
-            printNumber(i);           // print even number
-            sem_post(&semZero);       // give turn back to zero
+    void even(function<void(int)> printNumber)
+    {
+        for (int i = 2; i <= n; i += 2)
+        {
+            sem_wait(&semEven); // wait until zero signals even
+            printNumber(i);     // print even number
+            sem_post(&semZero); // give turn back to zero
         }
     }
 
-    void odd(function<void(int)> printNumber) {
-        for (int i = 1; i <= n; i += 2) {
-            sem_wait(&semOdd);        // wait until zero signals odd
-            printNumber(i);           // print odd number
-            sem_post(&semZero);       // give turn back to zero
+    void odd(function<void(int)> printNumber)
+    {
+        for (int i = 1; i <= n; i += 2)
+        {
+            sem_wait(&semOdd);  // wait until zero signals odd
+            printNumber(i);     // print odd number
+            sem_post(&semZero); // give turn back to zero
         }
     }
 };

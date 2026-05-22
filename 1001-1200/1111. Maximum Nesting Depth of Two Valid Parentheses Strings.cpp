@@ -46,5 +46,21 @@ class Solution
 public:
     vector<int> maxDepthAfterSplit(string seq)
     {
+        vector<int> ans(seq.size());
+        int depth = 0;
+        for (int i = 0; i < seq.size(); ++i)
+        {
+            if (seq[i] == '(')
+            {
+                ans[i] = depth % 2; // assign to A or B based on current depth
+                depth++;
+            }
+            else
+            {
+                depth--;
+                ans[i] = depth % 2; // assign to A or B based on current depth after decrement
+            }
+        }
+        return ans;
     }
 };

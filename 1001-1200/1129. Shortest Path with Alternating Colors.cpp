@@ -32,57 +32,61 @@ public:
     vector<int> shortestAlternatingPaths(int n, vector<vector<int>> &redEdges, vector<vector<int>> &blueEdges)
     {
         /*
-        explain solution here
-        solution is to use breadth first search (BFS) to find the shortest path from node 0 to all other nodes while alternating edge colors.
-        We will maintain two queues, one for red edges and one for blue edges, and we will also maintain a visited array to keep track of which nodes have been visited with which edge color.
-        We will start from node 0 and add it to both queues with a distance of 0. Then we will alternate between the two queues, processing all nodes in one queue before moving to the other queue.
-        For each node processed, we will add its neighbors to the appropriate queue based on the edge color and update their distances if they have not been visited with that edge color before.
+        original nodes are labeled from 0 to n -1
+        as a node can be reached by either a red edge or a blue edge, we can create two nodes for each original node, one for red and one for blue
+        if original node label is i . its red node will be labeled as 2*i and blue node will be labeled as 2*i + 1
+        and we enforce the rule tha t we can only go from a red node to a blue node and from a blue node to a red node when we build the adjacent list
 
+        so red edge from node i to node j is from blue node of node i to red node of node j , which is from 2*i + 1 to 2*j
+        and blue edge from node i to node j is from red node of node i to blue node of node j , which is from 2*i to 2*j + 1
+        and we use bfs starting from the red node and blue node of the original node 0 to find the shortest path to all other nodes
         */
-        vector<vector<int>> graph(n);
-        for (const auto &edge : redEdges)
+        vector<vector<int>> adj(2 * n);
+        for (auto &edge : redEdges)
         {
-            graph[edge[0]].push_back(edge[1] * 2); // Red edges are represented as even numbers
+            adj[2 * edge[0] + 1].push_back(2 * edge[1]);
         }
-        for (const auto &edge : blueEdges)
+        for (auto &edge : blueEdges)
         {
-            graph[edge[0]].push_back(edge[1] * 2 + 1); // Blue edges are represented as odd numbers
+            adj[2 * edge[0]].push_back(2 * edge[1] + 1);
         }
-
-        vector<int> answer(n, -1);
-        vector<vector<bool>> visited(n, vector<bool>(2, false)); // visited[node][color]
-
-        queue<pair<int, int>> q; // pair of (node, color)
-        q.push({0, 1}); // Start with node 0 and red edge
-        // q.push({0, 0}); // Start with node 0 and blue edge
-        // visited[0][0] = true;
-        visited[0][1] = true;
-        answer[0] = 0;
-
+        vector<int> dist(2 * n, -1);
+        queue<int> q;
+        dist[0] = 0; // distance to red node of original node 0 is 0
+        dist[1] = 0; // distance to blue node of original node 0 is 0
+        q.push(0); // start bfs from red node of original node 0
+        q.push(1); // start bfs from blue node of original node 0
         while (!q.empty())
         {
-            auto [node, color] = q.front();
+            int node = q.front();
             q.pop();
-            int nextColor = 1 - color; // Alternate color
-
-            for (int neighbor : graph[node])
+            for (int neighbor : adj[node])
             {
-                if ((neighbor % 2) == nextColor && !visited[neighbor / 2][nextColor])
+                if (dist[neighbor] == -1)
                 {
-                    visited[neighbor / 2][nextColor] = true;
-                    if (answer[neighbor / 2] == -1)
-                    {
-                        answer[neighbor / 2] = answer[node] + 1;
-                    }
-                    else
-                    {
-                        answer[neighbor / 2] = min(answer[neighbor / 2], answer[node] + 1);
-                    }
-                    q.push({neighbor / 2, nextColor});
+                    dist[neighbor] = dist[node] + 1;
+                    q.push(neighbor);
                 }
             }
         }
-
-        return answer;
+        vector<int> result(n, -1);
+        for (int i = 0; i < n; ++i)
+        {
+            int redDist = dist[2 * i];
+            int blueDist = dist[2 * i + 1];
+            if (redDist != -1 && blueDist != -1)
+            {
+                result[i] = min(redDist, blueDist);
+            }
+            else if (redDist != -1)
+            {
+                result[i] = redDist;
+            }
+            else if (blueDist != -1)
+            {
+                result[i] = blueDist;
+            }
+        }
+        return result;
     }
 };
